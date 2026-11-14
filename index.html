@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#171329" />
+  <meta name="description" content="A little birthday surprise for Aashima, from her 15-days friend, Farid." />
+  <title>For Ashi ✨ — Happy Birthday</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+
+    :root {
+      --night: #171329;
+      --plum: #30213f;
+      --pink: #f3a9bd;
+      --cream: #fff4e9;
+      --muted: #c8b9ca;
+      --gold: #f5d79a;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--cream);
+      font-family: 'DM Sans', sans-serif; overflow-x: hidden;
+      background:
+        radial-gradient(ellipse at 15% 10%, rgba(164,104,157,.25), transparent 35%),
+        radial-gradient(ellipse at 85% 35%, rgba(224,140,163,.15), transparent 32%),
+        linear-gradient(145deg, #171329 0%, #211832 48%, #291b35 100%);
+    }
+    body::before {
+      content:""; position:fixed; inset:0; pointer-events:none; opacity:.18;
+      background-image: radial-gradient(#fff 0.7px, transparent 0.7px);
+      background-size: 34px 34px; mask-image: linear-gradient(to bottom, black, transparent 90%);
+    }
+    .glow { position:fixed; width:320px; height:320px; border-radius:50%; filter:blur(90px); opacity:.16; pointer-events:none; }
+    .glow.one { background:#e88eae; top:8%; left:-180px; }
+    .glow.two { background:#a58de9; right:-180px; bottom:5%; }
+    .wrap { width:min(1080px, 92%); margin:auto; position:relative; }
+    header { display:flex; justify-content:space-between; align-items:center; padding:26px 0; }
+    .brand { letter-spacing:.16em; font-size:.72rem; color:#e8cada; text-transform:uppercase; }
+    .tiny-heart { color:var(--pink); font-size:1.2rem; }
+    .hero { min-height:78vh; display:grid; place-items:center; text-align:center; padding:52px 0 76px; }
+    .eyebrow { color:var(--gold); letter-spacing:.22em; text-transform:uppercase; font-size:.72rem; font-weight:700; }
+    h1, h2 { font-family:'Playfair Display', serif; font-weight:500; }
+    h1 { font-size:clamp(3.5rem, 9vw, 7.5rem); line-height:.98; margin:22px 0 18px; }
+    h1 em { color:var(--pink); font-weight:500; }
+    .hero p { max-width:590px; margin:0 auto; color:var(--muted); line-height:1.8; font-size:1.04rem; }
+    .scroll-cue { margin-top:42px; color:#d6bfd0; font-size:.78rem; letter-spacing:.12em; }
+    .scroll-cue span { display:block; margin-top:10px; color:var(--pink); font-size:1.2rem; animation:bob 1.8s infinite; }
+    @keyframes bob { 50% { transform:translateY(6px); } }
+
+    .letter-section { padding:44px 0 110px; text-align:center; }
+    .section-kicker { color:var(--pink); letter-spacing:.2em; text-transform:uppercase; font-size:.7rem; }
+    h2 { font-size:clamp(2rem, 5vw, 3.5rem); margin:12px 0 14px; }
+    .section-intro { color:var(--muted); line-height:1.7; max-width:570px; margin:0 auto 44px; }
+    .stage { perspective:1400px; width:min(430px, 88vw); height:300px; margin:0 auto; position:relative; cursor:pointer; }
+    .envelope {
+      position:absolute; inset:0; border-radius:13px; overflow:visible;
+      background:linear-gradient(145deg,#e9a8b9,#c8799a);
+      box-shadow:0 30px 70px #08061188, 0 0 45px #eea6c522;
+    }
+    .envelope::before, .envelope::after { content:""; position:absolute; inset:0; border-radius:13px; }
+    .envelope::before { background:linear-gradient(145deg,#f5c4cb,#d58ba5); clip-path:polygon(0 0,50% 57%,100% 0); z-index:4; }
+    .envelope::after { background:linear-gradient(35deg,#b9688d,#e49ab0); clip-path:polygon(0 100%,50% 48%,100% 100%); z-index:3; }
+    .flap {
+      position:absolute; inset:0; background:linear-gradient(145deg,#f8d0d2,#d88da8);
+      clip-path:polygon(0 0,100% 0,50% 58%); transform-origin:top;
+      transition:transform 1s cubic-bezier(.2,.75,.2,1); z-index:5; backface-visibility:hidden;
+      border-radius:13px;
+    }
+    .seal { position:absolute; z-index:6; left:50%; top:47%; transform:translate(-50%,-50%);
+      width:48px; height:48px; display:grid; place-items:center; border-radius:50%;
+      background:#8f4d70; color:#ffe8ec; box-shadow:0 5px 15px #713c5c66; transition:opacity .4s; }
+    .letter {
+      position:absolute; left:7%; right:7%; bottom:7%; height:84%; padding:28px 25px;
+      background:linear-gradient(155deg,#fff8ef,#f7e7e2); color:#493044; border-radius:8px;
+      z-index:2; transform:translateY(0); transition:transform 1s cubic-bezier(.2,.75,.2,1) .15s;
+      box-shadow:0 8px 25px #4a264533; display:flex; flex-direction:column; justify-content:center;
+    }
+    .letter .to { color:#a45d7b; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; }
+    .letter h3 { font:600 2rem 'Playfair Display',serif; margin:10px 0; }
+    .letter p { font:italic 1rem 'Playfair Display',serif; line-height:1.6; margin:0; }
+    .stage.open .flap { transform:rotateX(180deg); z-index:1; }
+    .stage.open .letter { transform:translateY(-105px); z-index:7; }
+    .stage.open .seal { opacity:0; }
+    .hint { color:#d7c2d2; font-size:.82rem; margin-top:22px; }
+
+    .message {
+      width:min(760px, 92%); margin:72px auto 0; text-align:left;
+      background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+      border:1px solid rgba(255,255,255,.12); border-radius:22px; padding:clamp(25px,5vw,48px);
+      box-shadow:0 25px 70px #09071455; backdrop-filter:blur(12px);
+    }
+    .message .hello { color:var(--pink); font-family:'Playfair Display',serif; font-size:1.6rem; }
+    .message p { color:#e4d8e3; line-height:1.95; font-size:1rem; margin:17px 0; }
+    .signature { text-align:right; margin-top:30px; color:var(--gold); font-family:'Playfair Display',serif; font-size:1.35rem; font-style:italic; }
+    .blessings { padding:28px 0 100px; text-align:center; }
+    .blessing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-top:35px; }
+    .blessing { padding:25px 18px; border-radius:17px; border:1px solid #ffffff1c; background:#ffffff09; }
+    .blessing .emoji { font-size:1.7rem; }
+    .blessing h3 { font:500 1.15rem 'Playfair Display',serif; margin:13px 0 8px; }
+    .blessing p { color:var(--muted); font-size:.88rem; line-height:1.65; margin:0; }
+    .closing { text-align:center; padding:40px 0 85px; }
+    .closing .big-heart { font-size:2rem; color:var(--pink); animation:pulse 1.7s infinite; }
+    @keyframes pulse { 50% { transform:scale(1.2); } }
+    .closing h2 { font-size:clamp(2rem,5vw,3.3rem); }
+    .closing p { color:var(--muted); }
+    footer { text-align:center; padding:22px 0 32px; border-top:1px solid #ffffff16; color:#9f8ea5; font-size:.75rem; letter-spacing:.06em; }
+    .sparkle { position:fixed; color:#f6d9a6; pointer-events:none; z-index:20; animation:floatUp 1.2s ease-out forwards; }
+    @keyframes floatUp { to { transform:translateY(-90px) rotate(35deg); opacity:0; } }
+
+    .portrait-section { padding: 0 0 70px; text-align:center; }
+    .portrait-wrap { width:min(330px,78vw); margin:34px auto 0; position:relative; }
+    .portrait-frame {
+      position:relative; padding:10px; border-radius:48% 48% 44% 44%;
+      background:linear-gradient(145deg,#f6dca8,#e9a6bd 45%,#9b79a9);
+      box-shadow:0 20px 60px #08061188, 0 0 45px #eaa8c533;
+      transform:rotate(-2deg);
+    }
+    .portrait-frame::before {
+      content:""; position:absolute; inset:-12px; border:1px solid #f4d9b477;
+      border-radius:49% 49% 45% 45%; transform:rotate(5deg);
+    }
+    .portrait-frame img {
+      display:block; width:100%; aspect-ratio:1/1.04; object-fit:cover;
+      object-position:center 38%; border-radius:46% 46% 42% 42%;
+      filter:grayscale(100%) contrast(1.04); border:2px solid #fff0e7;
+    }
+    .portrait-caption {
+      display:inline-block; margin-top:25px; padding:10px 19px;
+      border:1px solid #ffffff26; border-radius:999px; color:#f5d9e3;
+      background:#ffffff0b; font:italic 1rem 'Playfair Display',serif;
+    }
+    .floating-decor { position:absolute; color:var(--gold); font-size:1.3rem; text-shadow:0 0 18px #f5d79a77; }
+    .decor-a { top:3%; left:-13%; transform:rotate(-18deg); }
+    .decor-b { top:22%; right:-14%; color:var(--pink); font-size:1.6rem; }
+    .decor-c { bottom:13%; left:-12%; color:#e8c7ec; }
+    .decor-d { bottom:3%; right:-10%; font-size:1rem; }
+    .mini-note { color:#cdbbcf; font-size:.86rem; margin:15px auto 0; }
+    .message { position:relative; overflow:hidden; }
+    .message::after {
+      content:"✧"; position:absolute; top:17px; right:23px;
+      color:#f3c6d5; opacity:.45; font-size:2rem;
+    }
+    @media(max-width:650px) {
+      .portrait-wrap { width:min(285px,76vw); }
+      .decor-a { left:-9%; } .decor-b { right:-8%; }
+    }
+
+    @media(max-width:650px) {
+      .hero { min-height:70vh; padding-top:35px; }
+      .blessing-grid { grid-template-columns:1fr; }
+      .stage { height:265px; }
+      .letter { padding:20px 16px; }
+      .letter h3 { font-size:1.65rem; }
+      .stage.open .letter { transform:translateY(-88px); }
+    }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important; } }
+  </style>
+</head>
+<body>
+  <div class="glow one"></div><div class="glow two"></div>
+  <div class="wrap">
+    <header><div class="brand">A little something for you</div><div class="tiny-heart">♡</div></header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">A tiny surprise, made with love</div>
+          <h1>Happy Birthday,<br><em>Aashi.</em></h1>
+          <p>For Aashima urf Ashi — someone I met in a game just 15 days ago, but who somehow already feels like an old friend.</p>
+          <div class="scroll-cue">THERE'S A LITTLE LETTER FOR YOU <span>↓</span></div>
+        </div>
+      </section>
+
+
+      <section class="portrait-section">
+        <div class="section-kicker">A face to this little surprise</div>
+        <h2>Our birthday girl ♡</h2>
+        <p class="section-intro">A little photo moment, saved here just for your special day.</p>
+        <div class="portrait-wrap">
+          <span class="floating-decor decor-a">✧</span>
+          <span class="floating-decor decor-b">♡</span>
+          <span class="floating-decor decor-c">✦</span>
+          <span class="floating-decor decor-d">✧</span>
+          <div class="portrait-frame">
+            <img src="assets/ashi.jpg" alt="Aashi's birthday photo" />
+          </div>
+        </div>
+        <div class="portrait-caption">Ashi — keep shining, always ✨</div>
+        <p class="mini-note">A little photo, a little page, and lots of good wishes.</p>
+      </section>
+
+      <section class="letter-section">
+        <div class="section-kicker">Open when you're ready</div>
+        <h2>A little birthday letter</h2>
+        <p class="section-intro">I couldn't send you a big gift just yet, so I made you a small corner of the internet instead. Tap the envelope. ♡</p>
+
+        <div class="stage" id="card" role="button" tabindex="0" aria-label="Open the birthday letter">
+          <div class="envelope">
+            <div class="letter">
+              <div class="to">To my friend, Ashi</div>
+              <h3>Just for you ✨</h3>
+              <p>Some people don't need years to become special. Sometimes, 15 days are enough.</p>
+            </div>
+            <div class="flap"></div>
+            <div class="seal">♥</div>
+            <div class="envelope-front"></div>
+          </div>
+        </div>
+        <div class="hint" id="hint">Tap the card to open your letter</div>
+
+        <article class="message">
+          <div class="hello">Hey Ashi! ♡</div>
+          <p>First of all, a very, very happy birthday to you! 🥳</p>
+          <p>It's funny, right? It's only been 15 days since we met in a game, but honestly, it feels like we've known each other for years. I don't know how that happened, but I'm really glad our paths crossed. In such a short time, you've become one of the important people in my life.</p>
+          <p>And I'm sorry this wish is a little late. I wanted to make something special for you. I was thinking about what I could gift you, and then I thought — why not make a little website just for you? It took me some time, but I wanted it to feel personal. I hope this brings a smile to your face.</p>
+          <p>I wish you a future full of happiness, peace, good health, success, and beautiful surprises. May you get every little thing your heart wishes for. May you always have reasons to smile, people who genuinely care about you, and the courage to chase every dream you have. And whenever life gets difficult, I hope you find the strength to get through it and remember how amazing you are.</p>
+          <p>Always keep being yourself. Never stop laughing, dreaming, or being that lovely person you are. And no matter how many days pass, just remember that your 15-days friend is cheering for you. If you ever need someone to talk to, celebrate with, or simply share random things with, I'm here. I'll be there as a friend, as much as I can.</p>
+          <p>Once again, happy birthday, Ashi. I hope this new chapter of your life is kinder, brighter, and more beautiful than you imagine. You deserve all the good things coming your way. 💗</p>
+          <div class="signature">Your 15-days friend,<br>Farid Khan</div>
+        </article>
+      </section>
+
+      <section class="blessings">
+        <div class="section-kicker">A few wishes for your new year</div>
+        <h2>May life be gentle with you</h2>
+        <p class="section-intro">A little collection of things I genuinely wish for you.</p>
+        <div class="blessing-grid">
+          <div class="blessing"><div class="emoji">🌷</div><h3>Endless happiness</h3><p>May your days be filled with laughter, lovely moments, and people who make you feel valued.</p></div>
+          <div class="blessing"><div class="emoji">✨</div><h3>Dreams that come true</h3><p>May every effort take you closer to your dreams, and may success find its way to you.</p></div>
+          <div class="blessing"><div class="emoji">🕊️</div><h3>Peace & strength</h3><p>May your heart stay peaceful, your mind stay strong, and brighter days follow every hard one.</p></div>
+        </div>
+      </section>
+
+      <section class="closing">
+        <div class="big-heart">♡</div>
+        <h2>Here's to you, Ashi!</h2>
+        <p>15 days of friendship, and hopefully many more memories to come.</p>
+        <p style="color:var(--pink);font-family:'Playfair Display',serif;font-size:1.15rem;">Stay happy. Stay blessed. Keep shining. ✨</p>
+      </section>
+    </main>
+    <footer>MADE WITH ♡ BY FARID KHAN · JUST FOR ASHI</footer>
+  </div>
+  <script>
+    const card = document.getElementById('card');
+    const hint = document.getElementById('hint');
+    function toggleCard() {
+      const isOpen = card.classList.toggle('open');
+      hint.textContent = isOpen ? 'A little note, just for you ♡' : 'Tap the card to open your letter';
+      if (isOpen) {
+        for (let i = 0; i < 18; i++) {
+          const s = document.createElement('span');
+          s.className = 'sparkle';
+          s.textContent = ['✦','✧','♡','·'][Math.floor(Math.random()*4)];
+          s.style.left = (15 + Math.random()*70) + 'vw';
+          s.style.top = (35 + Math.random()*45) + 'vh';
+          s.style.fontSize = (12 + Math.random()*17) + 'px';
+          document.body.appendChild(s);
+          setTimeout(() => s.remove(), 1300);
+        }
+      }
+    }
+    card.addEventListener('click', toggleCard);
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleCard(); }
+    });
+  </script>
+</body>
+</html>
